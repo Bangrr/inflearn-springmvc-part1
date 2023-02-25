@@ -69,4 +69,22 @@ public class RequestParamServlet extends HttpServlet {
  * request.getParameterValues() 를 사용해야 한다.
  * 중복일 때 request.getParameter()를 사용하면 request.getParameterValues() 의 첫 번째 값을 반환한다.
  *
+ * [ POST HTML Form ]
+ * HTML Form을 사용해서 데이터를 전송하면 다음과 같은 특징이 있다.
+ *      content-type: application/x-www-form-urlencoded
+ *      메시지 바디에 쿼리 파라미터 형식으로 데이터를 전달한다. ( username=hello&age=20 )
+ *
+ * application/x-www-form-urlencoded 형식은 GET 쿼리 파라미터 형식과 같아서
+ * 쿼리 파라미터 조회 메서드를 그대로 사용하면 된다. ( 클라이언트 입장에서는 다르지만 서버 입장에서는 형식이 동일하다. )
+ * request.getParameter() 로 GET URL 쿼리 파라미터 형식도 지원하고 POST HTML Form 형식도 둘 다 지원한다.
+ *
+ * content-type은 HTTP 메시지 바디의 데이터 형식을 지정한다.
+ * GET 쿼리 파라미터 형식은 HTTP 메시지 바디를 사용하지 않기 때문에 content-type이 없다.
+ * POST HTML Form 형식은 HTTP 메시지 바디에 해당 데이터를 포함해서 보내기 떄문에 content-type을 꼭 지정해아 한다.
+ * 폼으로 데이터를 전송하는 형식을 application/x-www-form-urlencoded 라 한다.
+ *
+ * Postman 을 사용해서도 테스트를 할 수 있다.
+ * http://localhost:8080/request-param
+ * POST 선택, Body > x-www-form-urlencoded 선택, Body 내용 입력 ( username=kim , age=20 )
+ * Headers content-type: application/x-www-form-urlencoded 추가됐는지 확인 --> Send 후 로그 확인
  */
